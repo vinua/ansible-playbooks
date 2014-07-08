@@ -1,0 +1,5 @@
+[mongo_servers]
+ubuntu-01.local
+
+[docker_servers]
+ubuntu-01.local

@@ -1,0 +1,7 @@
+---
+
+- name: configure resolv.conf
+  template: src=resolv.conf dest=/etc/resolvconf/resolv.conf.d/base
+
+- name: write resolv.conf
+  command: resolvconf -u

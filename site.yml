@@ -1,0 +1,16 @@
+---
+
+- hosts: all
+  remote_user: root
+  roles:
+  - role: common
+
+- hosts: mongo_servers
+  remote_user: root
+  roles:
+  - role: mongod
+
+- hosts: docker_servers
+  remote_user: root
+  roles:
+  - role: docker

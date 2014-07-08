@@ -1,0 +1,22 @@
+---
+
+- name: add mongodb apt key
+  apt_key: keyserver=keyserver.ubuntu.com id=7F0CEB10 state=present
+
+- name: add mongodb repository
+  apt_repository: repo='deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' state=present
+
+- name: update apt cache if needed
+  apt: update_cache=yes cache_valid_time=3600
+
+- name: install mongodb package
+  apt: name=mongodb-org state=present
+
+- name: create mongod configuration file
+  template: src=mongod.conf dest=/etc/mongod.conf
+
+- name: mongod service is enabled
+  service: name=mongod enabled=yes
+
+- name: mongod service is running
+  service: name=mongod state=started
