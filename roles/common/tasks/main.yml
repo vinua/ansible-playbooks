@@ -5,3 +5,31 @@
 
 - name: write resolv.conf
   command: resolvconf -u
+
+- name: upgrade the distribution
+  apt: upgrade=yes
+
+- name: install packages
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - build-essential
+    - curl
+    - fail2ban
+    - git
+    - rsync
+    - ufw
+    - unattended-upgrades
+    - vim
+    - wget
+
+- name: ensure fail2ban is running
+  action: service name=fail2ban state=restarted enabled=yes
+
+- name: reset firewall
+  action: shell ufw --force reset
+
+- name: allow ssh port on firewall
+  action: shell ufw allow 22
+
+- name: enable firewall
+  action: shell ufw --force enable

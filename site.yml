@@ -5,6 +5,16 @@
   roles:
   - role: common
 
+- hosts: dns_servers
+  remote_user: root
+  roles:
+  - role: dns
+
+- hosts: cdn_servers
+  remote_user: root
+  roles:
+  - role: cdn
+
 - hosts: mongo_servers
   remote_user: root
   roles:
