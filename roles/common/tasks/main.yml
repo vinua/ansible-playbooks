@@ -1,10 +1,10 @@
 ---
 
+# TODO: install resolvconf and reboot if OVH
 - name: configure resolv.conf
   template: src=resolv.conf dest=/etc/resolvconf/resolv.conf.d/base
-
-- name: write resolv.conf
-  command: resolvconf -u
+  notify:
+  - restart resolvconf
 
 - name: upgrade the distribution
   apt: upgrade=yes
