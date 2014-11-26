@@ -1,5 +1,8 @@
 ---
 
+- name: install apt-transport-https package
+  apt: name=apt-transport-https state=present
+
 - name: add docker apt key
   apt_key: keyserver=keyserver.ubuntu.com id=A88D21E9 state=present
 
