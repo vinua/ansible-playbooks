@@ -14,3 +14,9 @@
 
 - name: install docker package
   apt: name=lxc-docker state=present
+
+- name: enable forwarding traffic
+  ufw: state=enabled policy=allow direction=routed
+
+- name: start docker
+  action: service name=docker state=started
