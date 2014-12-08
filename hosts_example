@@ -33,7 +33,7 @@ localhost ansible_python_interpreter=/usr/bin/python2
 #arcturus.example.net
 #vega.example.net
 
-[cdn_servers]
+[proxy_servers]
 #sirius.example.net
 #canopus.example.net
 #toliman.example.net

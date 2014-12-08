@@ -10,7 +10,7 @@
   roles:
   - role: dns
 
-- hosts: cdn_servers
+- hosts: proxy_servers
   remote_user: root
   roles:
   - role: cdn

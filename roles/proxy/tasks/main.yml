@@ -1,0 +1,16 @@
+---
+
+- name: update apt cache if needed
+  apt: update_cache=yes cache_valid_time=3600
+
+- name: install package
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - pound
+    - varnish
+
+- name: allow ports on firewall
+  action: shell ufw allow {{ item }}
+  with_items:
+    - 80
+    - 443
