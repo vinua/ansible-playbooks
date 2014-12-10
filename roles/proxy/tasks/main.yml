@@ -10,7 +10,7 @@
     - varnish
 
 - name: allow ports on firewall
-  action: shell ufw allow {{ item }}
+  ufw: rule=allow port={{ item }}
   with_items:
     - 80
     - 443

@@ -7,4 +7,4 @@
   apt: name=pdns-server state=present
 
 - name: allow dns port on firewall
-  action: shell ufw allow 53
+  ufw: rule=allow port=53

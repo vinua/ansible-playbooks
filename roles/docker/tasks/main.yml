@@ -16,7 +16,10 @@
   apt: name=lxc-docker state=present
 
 - name: enable forwarding traffic
-  ufw: state=enabled policy=allow direction=routed
+  lineinfile: >
+    dest=/etc/default/ufw
+    regexp=DEFAULT_FORWARD_POLICY=
+    line=DEFAULT_FORWARD_POLICY="ACCEPT"
 
 - name: start docker
   action: service name=docker state=started
