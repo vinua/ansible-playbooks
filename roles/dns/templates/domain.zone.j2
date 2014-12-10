@@ -1,0 +1,13 @@
+$ORIGIN {{ item }}.
+$TTL 1h
+@                 IN  SOA    {{ groups.dns_servers[0] }}. admin.{{ item }}. ({{ timestamp }} 1h 10m 1d 1h)
+
+{% for server in groups.dns_servers %}
+@                 IN  NS     {{ server }}.
+{% endfor %}
+
+{% for server in groups.droplets %}
+@                 IN  A      {{ server }}
+{% endfor %}
+
+www               IN  CNAME  {{ item }}.

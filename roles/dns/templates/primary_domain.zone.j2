@@ -1,0 +1,18 @@
+$ORIGIN {{ item }}.
+$TTL 1h
+@                 IN  SOA    ns1.{{ item }}. admin.{{ item }}. ({{ timestamp }} 1h 10m 1d 1h)
+
+{% for server in groups.dns_servers %}
+@                 IN  NS     ns{{loop.index}}.{{ item }}.
+ns{{loop.index}}  IN  A      {{ hostvars[server].ansible_default_ipv4.address }}
+{% endfor %}
+
+{% for server in groups.proxy_servers %}
+@                 IN  A      {{ hostvars[server].ansible_default_ipv4.address }}
+{% endfor %}
+
+www               IN  CNAME  {{ item }}.
+
+{% for server in groups.droplets %}
+{{ hostvars[server].inventory_hostname_short }}  IN  A  {{ hostvars[server].ansible_default_ipv4.address }}
+{% endfor %}

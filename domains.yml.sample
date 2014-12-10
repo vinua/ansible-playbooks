@@ -1,0 +1,4 @@
+---
+primary_domain: example.net
+domains:
+  - example.com

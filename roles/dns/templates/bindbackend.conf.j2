@@ -1,0 +1,11 @@
+zone "{{ primary_domain }}" IN {
+    type master;
+    file "/etc/powerdns/{{ primary_domain }}.zone";
+};
+
+{% for domain in domains %}
+zone "{{ domain }}" IN {
+    type master;
+    file "/etc/powerdns/{{ domain }}.zone";
+};
+{% endfor %}

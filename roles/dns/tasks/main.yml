@@ -6,5 +6,23 @@
 - name: install powerdns package
   apt: name=pdns-server state=present
 
+- name: start powerdns
+  action: service name=pdns state=started
+
 - name: allow dns port on firewall
   ufw: rule=allow port=53
+
+- name: create bind backend configuration file
+  template: src=bindbackend.conf.j2 dest=/etc/powerdns/bindbackend.conf
+
+- name: create zone file for primary domain
+  template: src=primary_domain.zone.j2 dest=/etc/powerdns/{{ item }}.zone
+  with_items:
+    - "{{ primary_domain }}"
+
+- name: create zone files for managed domains
+  template: src=domain.zone.j2 dest=/etc/powerdns/{{ item }}.zone
+  with_items: domains
+
+- name: reload powerdns
+  action: service name=pdns state=reloaded
