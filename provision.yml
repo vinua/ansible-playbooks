@@ -13,7 +13,7 @@
 - hosts: proxy_servers
   remote_user: root
   roles:
-  - role: cdn
+  - role: proxy
 
 - hosts: mongo_servers
   remote_user: root
