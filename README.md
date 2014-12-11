@@ -16,7 +16,7 @@ Usage
 
 You may want to update DigitalOcean's variables (regions, images, and sizes).
 
-    $ python digital_ocean_vars.py > digital_ocean_vars.yml
+    $ python digital_ocean_vars.py > group_vars/droplets.yml
 
 Rename and edit `hosts.sample` and `domains.yml.sample`.
 
