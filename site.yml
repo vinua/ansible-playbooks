@@ -1,6 +1,5 @@
 ---
 - hosts: droplets
-  #connection: local
   gather_facts: no
   vars:
     ssh_key_name: "{{ lookup('env', 'USER') }}"
@@ -39,8 +38,6 @@
 
 - hosts: droplets
   remote_user: root
-  tasks:
-    - command: uptime
   roles:
     - role: common
 
