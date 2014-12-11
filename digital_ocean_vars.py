@@ -40,7 +40,7 @@ They must be specified via environment variables (DO_CLIENT_ID and DO_API_KEY)''
         print '---'
         for k in ['regions', 'images', 'sizes']:
             for d in self.data[k]:
-                print 'do_%s_%s: %s' % (k, d['slug'].replace('-', ''), d['id'])
+                print 'do_%s_%s: %s' % (k[0:-1], d['slug'].replace('-', ''), d['id'])
 
 
     ###########################################################################
