@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: all:!localhost
   remote_user: root
   roles:
     - role: common
