@@ -4,7 +4,7 @@
 - name: configure resolv.conf
   template: src=resolv.conf dest=/etc/resolvconf/resolv.conf.d/base
   notify:
-  - restart resolvconf
+    - restart resolvconf
 
 - name: upgrade the distribution
   apt: upgrade=yes

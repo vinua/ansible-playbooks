@@ -9,6 +9,16 @@
     - pound
     - varnish
 
+- name: create varnish configuration file
+  template: src=varnish dest=/etc/default/varnish
+  notify:
+    - restart varnish
+
+- name: create varnish VCL file
+  template: src=default.vcl dest=/etc/varnish/default.vcl
+  notify:
+    - restart varnish
+
 - name: allow ports on firewall
   ufw: rule=allow port={{ item }}
   with_items:
