@@ -1,0 +1,29 @@
+---
+- hosts: all
+  remote_user: root
+  roles:
+    - role: common
+
+- hosts: dns_servers
+  remote_user: root
+  vars:
+    timestamp: "{{ lookup('pipe', 'date +%s') }}"
+  vars_files:
+    - domains.yml
+  roles:
+    - role: dns
+
+- hosts: proxy_servers
+  remote_user: root
+  roles:
+    - role: proxy
+
+- hosts: docker_servers
+  remote_user: root
+  roles:
+    - role: docker
+
+- hosts: mongo_servers
+  remote_user: root
+  roles:
+    - role: mongod
