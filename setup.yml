@@ -7,11 +7,12 @@
     do_client_id: "{{ lookup('env', 'DO_CLIENT_ID') }}"
     do_api_key: "{{ lookup('env', 'DO_API_KEY') }}"
   tasks:
+    # FIXME: Broken with Ansible 1.8.2: lookup('file', ssh_key_path)
     - digital_ocean: >
         state=present
         command=ssh
         name="{{ ssh_key_name }}"
-        ssh_pub_key="{{ lookup('file', ssh_key_path) }}"
+        ssh_pub_key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
         client_id="{{ do_client_id }}"
         api_key="{{ do_api_key }}"
       register: do
