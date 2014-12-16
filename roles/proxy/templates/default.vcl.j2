@@ -15,10 +15,10 @@ vcl 4.0;
 import directors;
 
 {% for app in apps %}
-  {% for backend in app.backends %}
+  {% for container in app.containers %}
     backend {{ app.name }}_{{ loop.index }} {
-      .host = "{{ backend.host }}";
-      .port = "{{ backend.port }}";
+      .host = "{{ container.host }}";
+      .port = "{{ container.port }}";
     }
   {% endfor %}
 {% endfor %}
@@ -26,7 +26,7 @@ import directors;
 sub vcl_init {
   {% for app in apps %}
     new {{ app.name }} = directors.round_robin();
-    {% for backend in app.backends %}
+    {% for container in app.containers %}
       {{ app.name }}.add_backend({{ app.name }}_{{ loop.index }});
     {% endfor %}
   {% endfor %}

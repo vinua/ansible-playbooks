@@ -3,7 +3,7 @@ apps:
   - name: w0j8s760igplmobr
     domains:
       - w0j8s760igplmobr.example.com
-    backends:
+    containers:
       - host: procyon.example.net
         port: 31337
       - host: procyon.example.net
@@ -12,7 +12,7 @@ apps:
     domains:
       - rc8stpey8xurnx7r.example.com
       - www.example.com
-    backends:
+    containers:
       - host: procyon.example.net
         port: 5743
       - host: procyon.example.net
