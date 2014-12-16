@@ -19,6 +19,7 @@
     - apps.yml
   roles:
     - role: proxy
+    - role: git
 
 - hosts: docker_servers
   remote_user: root

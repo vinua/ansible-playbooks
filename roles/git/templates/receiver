@@ -1,0 +1,9 @@
+#!/bin/bash
+
+REPOSITORY=$1
+REVISION=$2
+USERNAME=$3
+FINGERPRINT=$4
+
+GIT="/srv/git/$REPOSITORY/$REVISION"
+mkdir -p $GIT && cat | tar -x -C $GIT

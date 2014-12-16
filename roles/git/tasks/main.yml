@@ -1,0 +1,24 @@
+---
+
+- name: update apt cache if needed
+  apt: update_cache=yes cache_valid_time=3600
+
+- name: install git package
+  apt: name=git state=present
+
+- name: create directory of git repositories
+  file: path=/srv/git state=directory
+
+- name: copy gitreceive script
+  template: src=gitreceive dest=/usr/local/bin/gitreceive
+
+- name: make gitreceive script executable
+  file: path=/usr/local/bin/gitreceive mode=0755
+
+- name: create receiver script
+  template: src=receiver dest=/home/git/receiver
+
+# FIXME: ssh_key is a user supplied string, this is a security risk.
+- name: authorize users
+  command: echo "{{ item.ssh_key }}" | gitreceive upload-key {{ item.uid }}
+  with_items: users
