@@ -17,6 +17,7 @@
   remote_user: root
   vars_files:
     - apps.yml
+    - users.yml
   roles:
     - role: proxy
     - role: git
