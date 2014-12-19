@@ -14,9 +14,9 @@ vcl 4.0;
 
 import directors;
 
-{% for app in apps %}
-  {% for container in app.containers %}
-    backend {{ app.name }}_{{ loop.index }} {
+{% for website in websites %}
+  {% for container in website.containers %}
+    backend {{ website.id }}_{{ loop.index }} {
       .host = "{{ container.host }}";
       .port = "{{ container.port }}";
     }
@@ -24,19 +24,19 @@ import directors;
 {% endfor %}
 
 sub vcl_init {
-  {% for app in apps %}
-    new {{ app.name }} = directors.round_robin();
-    {% for container in app.containers %}
-      {{ app.name }}.add_backend({{ app.name }}_{{ loop.index }});
+  {% for website in websites %}
+    new {{ website.id }} = directors.round_robin();
+    {% for container in website.containers %}
+      {{ website.id }}.add_backend({{ website.id }}_{{ loop.index }});
     {% endfor %}
   {% endfor %}
 }
 
 sub vcl_recv {
-  {% for app in apps %}
-    {% for domain in app.domains %}
+  {% for website in websites %}
+    {% for domain in website.domains %}
       if (req.http.host == "{{ domain }}") {
-        set req.backend_hint = {{ app.name }}.backend();
+        set req.backend_hint = {{ website.id }}.backend();
       }
     {% endfor %}
   {% endfor %}

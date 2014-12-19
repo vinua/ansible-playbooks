@@ -16,7 +16,7 @@
 - hosts: proxy_servers
   remote_user: root
   vars_files:
-    - apps.yml
+    - websites.yml
     - users.yml
   roles:
     - role: proxy
@@ -24,6 +24,8 @@
 
 - hosts: docker_servers
   remote_user: root
+  vars_files:
+    - websites.yml
   roles:
     - role: docker
 
