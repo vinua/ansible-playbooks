@@ -19,7 +19,7 @@
   command: gitreceive init
 
 - name: add git user to docker group
-  user: name=git groups=git
+  user: name=git groups=docker
 
 - name: restart docker
   action: service name=docker state=restarted
