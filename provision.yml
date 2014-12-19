@@ -15,17 +15,17 @@
 
 - hosts: proxy_servers
   remote_user: root
-  vars_files:
-    - websites.yml
-    - users.yml
+  #vars_files:
+  #  - websites.yml
+  #  - users.yml
   roles:
     - role: proxy
     - role: git
 
 - hosts: docker_servers
   remote_user: root
-  vars_files:
-    - websites.yml
+  #vars_files:
+  #  - websites.yml
   roles:
     - role: docker
 

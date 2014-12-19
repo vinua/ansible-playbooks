@@ -29,5 +29,7 @@
 
 # FIXME: ssh_key is a user supplied string, this is a security risk.
 - name: authorize users
-  command: echo "{{ item.ssh_key }}" | gitreceive upload-key {{ item.uid }}
-  with_items: users
+  command: echo "{{ item.1 }}" | gitreceive upload-key {{ item.0.id }}
+  with_subelements:
+    - users
+    - ssh_keys
