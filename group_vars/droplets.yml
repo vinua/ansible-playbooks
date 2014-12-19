@@ -2,15 +2,14 @@
 do_regions:
   do_region_sfo1: 3
   do_region_nyc2: 4
-  do_region_ams2: 5
   do_region_sgp1: 6
   do_region_lon1: 7
   do_region_nyc3: 8
   do_region_ams3: 9
 do_images:
-  do_image_coreosstable: 8717624
   do_image_coreosbeta: 8924796
-  do_image_coreosalpha: 8925622
+  do_image_coreosstable: 9134482
+  do_image_coreosalpha: 9134547
   do_image_fedora20x64: 6370882
   do_image_fedora20x32: 6370885
   do_image_fedora19x64: 6370968
@@ -38,14 +37,14 @@ do_images:
   do_image_lamp: 6732691
   do_image_django: 6734697
   do_image_mean: 6798184
-  do_image_owncloud: 8100271
   do_image_node: 8102573
-  do_image_gitlab: 8228944
-  do_image_docker: 8345531
   do_image_drupal: 8375425
   do_image_dokku: 8383942
   do_image_magento: 8412876
-  do_image_ghost: 8720649
+  do_image_owncloud: 8917824
+  do_image_ghost: 9063170
+  do_image_docker: 9128941
+  do_image_gitlab: 9138200
   do_image_redmine: 7572830
 do_sizes:
   do_size_512mb: 66
