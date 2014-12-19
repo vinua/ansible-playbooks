@@ -23,3 +23,9 @@
 
 - name: start docker
   action: service name=docker state=started
+
+- name: ensure pip is installed
+  apt: name=python-pip state=present
+
+- name: install fig
+  pip: name=fig
