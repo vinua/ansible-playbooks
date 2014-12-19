@@ -1,0 +1,10 @@
+web:
+  build: current
+  ports:
+    - 80
+{% if environment %}
+  environment:
+{% for key, value in environment.iteritems() %}
+    {{ key }}: {{ value }}
+{% endfor %}
+{% endif %}

@@ -29,3 +29,14 @@
 
 - name: install fig
   pip: name=fig
+
+- name: create www directory
+  file: path=/srv/www/ state=directory owner=git
+
+- name: create www subdirectories
+  file: path=/srv/www/{{ item.id }} state=directory owner=git
+  with_items: websites
+
+- name: create fig config files
+  template: src=fig.yml.j2 dest=/srv/www/{{ item.id }}/fig.yml
+  with_items: websites
