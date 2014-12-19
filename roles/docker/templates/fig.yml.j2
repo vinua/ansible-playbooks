@@ -2,9 +2,9 @@ web:
   build: current
   ports:
     - 80
-{% if environment %}
+{% if item.environment %}
   environment:
-{% for key, value in environment.iteritems() %}
+{% for key, value in item.environment.iteritems() %}
     {{ key }}: {{ value }}
 {% endfor %}
 {% endif %}
