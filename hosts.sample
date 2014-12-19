@@ -1,14 +1,14 @@
 localhost ansible_python_interpreter=/usr/bin/python
 
 [droplets]
-#sirius.example.net do_size=do_size_512mb do_region=do_region_ams2 do_image=do_image_ubuntu1410x64
+#sirius.example.net do_size=do_size_512mb do_region=do_region_ams3 do_image=do_image_ubuntu1410x64
 #canopus.example.net do_size=do_size_512mb do_region=do_region_lon1 do_image=do_image_ubuntu1410x64
 #toliman.example.net do_size=do_size_512mb do_region=do_region_nyc2 do_image=do_image_ubuntu1410x64
 #arcturus.example.net do_size=do_size_512mb do_region=do_region_sfo1 do_image=do_image_ubuntu1410x64
 #vega.example.net do_size=do_size_512mb do_region=do_region_sgp1 do_image=do_image_ubuntu1410x64
-#capella.example.net do_size=do_size_512mb do_region=do_region_ams2 do_image=do_image_ubuntu1410x64
+#capella.example.net do_size=do_size_512mb do_region=do_region_ams3 do_image=do_image_ubuntu1410x64
 #rigel.example.net do_size=do_size_512mb do_region=do_region_nyc2 do_image=do_image_ubuntu1410x64
-#procyon.example.net do_size=do_size_512mb do_region=do_region_ams2 do_image=do_image_ubuntu1410x64
+#procyon.example.net do_size=do_size_512mb do_region=do_region_ams3 do_image=do_image_ubuntu1410x64
 
 [europe]
 #sirius.example.net
