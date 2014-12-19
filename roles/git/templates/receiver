@@ -1,9 +1,21 @@
 #!/bin/bash
 
+set -e
+
 REPOSITORY=$1
 REVISION=$2
 USERNAME=$3
 FINGERPRINT=$4
+APP=$(basename $REPOSITORY .git)
 
-GIT="/srv/git/$REPOSITORY/$REVISION"
-mkdir -p $GIT && cat | tar -x -C $GIT
+build() {
+  mkdir -p /srv/www/$APP/$REVISION
+  cd /srv/www/$APP
+  cat | tar -x -C $REVISION
+  rm -f current
+  ln -s $REVISION current
+  fig up -d
+}
+
+# FIXME: do this on remote docker hosts instead
+build

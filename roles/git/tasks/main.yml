@@ -15,6 +15,15 @@
 - name: make gitreceive script executable
   file: path=/usr/local/bin/gitreceive mode=0755
 
+- name: init gitreceive
+  command: gitreceive init
+
+- name: add git user to docker group
+  user: name=git groups=git
+
+- name: restart docker
+  action: service name=docker state=restarted
+
 - name: create receiver script
   template: src=receiver dest=/home/git/receiver
 
