@@ -15,6 +15,7 @@ build() {
   rm -f current
   ln -s $REVISION current
   cp .env current/
+  fig build
   fig up -d
 }
 
