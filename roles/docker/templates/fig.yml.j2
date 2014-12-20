@@ -1,7 +1,7 @@
 web:
   build: current
   ports:
-    - "80:{{ item.containers.0.port }}"
+    - "{{ item.containers.0.port }}:80"
 {% if item.environment %}
   environment:
 {% for key, value in item.environment.iteritems() %}
