@@ -14,6 +14,7 @@ build() {
   cat | tar -x -C $REVISION
   rm -f current
   ln -s $REVISION current
+  cp .env current/
   fig up -d
 }
 
