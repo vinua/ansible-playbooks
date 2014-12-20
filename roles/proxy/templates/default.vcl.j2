@@ -16,7 +16,7 @@ import directors;
 
 {% for website in websites %}
   {% for container in website.containers %}
-    backend {{ website.id }}_{{ loop.index }} {
+    backend web_{{ website.id }}_{{ loop.index }} {
       .host = "{{ container.host }}";
       .port = "{{ container.port }}";
     }
@@ -25,9 +25,9 @@ import directors;
 
 sub vcl_init {
   {% for website in websites %}
-    new {{ website.id }} = directors.round_robin();
+    new web_{{ website.id }} = directors.round_robin();
     {% for container in website.containers %}
-      {{ website.id }}.add_backend({{ website.id }}_{{ loop.index }});
+      web_{{ website.id }}.add_backend(web_{{ website.id }}_{{ loop.index }});
     {% endfor %}
   {% endfor %}
 }
@@ -36,7 +36,7 @@ sub vcl_recv {
   {% for website in websites %}
     {% for domain in website.domains %}
       if (req.http.host == "{{ domain }}") {
-        set req.backend_hint = {{ website.id }}.backend();
+        set req.backend_hint = web_{{ website.id }}.backend();
       }
     {% endfor %}
   {% endfor %}
