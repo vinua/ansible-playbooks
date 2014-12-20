@@ -40,3 +40,7 @@
 - name: create fig config files
   template: src=fig.yml.j2 dest=/srv/www/{{ item.id }}/fig.yml
   with_items: websites
+
+- name: create env files
+  template: src=env.j2 dest=/srv/www/{{ item.id }}/.env
+  with_items: websites
